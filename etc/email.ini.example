@@ -1,0 +1,5 @@
+[email]
+server = mail.example.com
+username = bot@example.com
+password = XXXXXXX
+from = "Encrypted Bot" <bot@example.com>

@@ -1,0 +1,7 @@
+[test]
+gpgkeys = me@example.com
+recipients = "me1 <me@example.com>" "me2 <me2@example.com>"
+
+[all]
+gpgkeys = me@example.com alice@example.com bob@example.com
+recipients = all@example.com
