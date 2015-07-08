@@ -8,6 +8,9 @@
 
 package require Tcl 8.5
 package require cmdline
+if {[info commands try] eq ""} {
+	package require try
+}
 
 ## command line options
 
