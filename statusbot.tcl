@@ -12,6 +12,7 @@ package require cmdline
 ## command line options
 
 set options {
+	{cmd.arg "send" "command"}
 	{group.arg "test" "send to group"}
 	{subject.arg "hello" "email subject"}
 	{stdin "read email body from stdin"}
@@ -37,7 +38,7 @@ foreach i {config get_http gpg_encrypt email} { source "${params(libdir)}/$i.tcl
 
 read_config $params(inidir)
 
-switch $argv {
+switch $params(cmd) {
 	send {
 		if {!$params(stdin) && $params(url) eq ""} { puts "no body?"; exit 1 }
 
@@ -51,7 +52,7 @@ switch $argv {
 		send_smtp_encrypted -group $params(group) -subject $params(subject) -body $data
 	}
 	default {
-		puts "unknown cmd. try '$argv0 send ...'"
+		puts "unknown cmd. try '$argv0 -cmd send ...'"
 		exit 1
 	}
 }
