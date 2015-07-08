@@ -7,10 +7,10 @@ package require cmdline
 proc send_smtp_encrypted {args} {
 	array set p $args
 	
-	set token [mime::initialize -canonical "text/plain; charset=utf-8" -string $p(-body)]
+	set token [mime::initialize -canonical "text/plain; charset=utf-8" -string $p(-body) -encoding 8bit]
 	set mimemsg [mime::buildmessage $token]
 	mime::finalize $token
-	
+
 	set gpg_recipients [dict get $::cfg(groups) $p(-group) gpgkeys]
 	set encrypted [gpg_encrypt $gpg_recipients $mimemsg]
 
