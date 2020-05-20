@@ -38,7 +38,8 @@ try {
 
 ## prepare tclgpg
 if {![info exists ::env(GPG_AGENT_INFO)]} {
-	# puts [exec gpg-connect-agent "GETINFO socket_name" "GETINFO pid" /bye]
+	## fake GPG_AGENT_INFO as we don't actually use this anymore in GnuPG 2.1 and above
+	## but the tclgpg package still requires this
 	set ::env(GPG_AGENT_INFO) "foo"
 }
 
